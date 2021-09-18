@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
+<link type="text/css" rel="stylesheet" id="dark-mode-general-link">
+<style lang="en" type="text/css" id="dark-mode-custom-style"></style>
+<style lang="en" type="text/css" id="dark-mode-native-style"></style>-->
+
+<head>
+    <title>Assignment Tracker</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> <!--icons-->
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="">
+            <h1><a href="{{ url_for('index') }}" class="logo">Assignment Tracker</a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="{{ url_for('index') }}"><span class="fa fa-home mr-3"></span> Homepage</a>
+                </li>
+                <!--<li>
+                    <a href="{{ url_for('tasks') }}"><span class="fa fa-sticky-note mr-3"></span> Tasks</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('calendar') }}"><span class="fa fa-sticky-note mr-3"></span> Calendar</a>
+                </li>
+                
+                <li>
+                    <a href="{{ url_for('settings') }}"><span class="fa fa-user mr-3"></span> Settings</a>
+                </li>-->
+                <li>
+                    <a href="{{ url_for('info') }}"><span class="fa fa-paper-plane mr-3"></span> Info</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <h2 class="mb-4">Update Task</h2>
+            <p>Here, you can update a task. Make sure to enter info in all fields!</p>            
+                         
+            <div>
+                <form action="/update/{{task.id}}" method="POST">
+                    <label for="content">Task Name:</label>
+                    <input type="text" name="content" id="ct">
+                    
+
+                    <label for="details">Details:</label>
+                    <input type="text" name="details" id="dt">
+                    
+
+                    <label for="subject">Subject:</label>
+                    <input type="text" name="subject" id="sj">
+                    
+
+                    <label for="duedate">Due Date:</label>
+                    <input type="datetime-local" name="duedate" id="dd">
+                    
+                    <input type="submit" value="Update">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

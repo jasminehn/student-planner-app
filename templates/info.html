@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment Tracker</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="">
+            <h1><a href="{{ url_for('index') }}" class="logo">Assignment Tracker</a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="{{ url_for('index') }}"><span class="fa fa-home mr-3"></span> Home</a>
+                </li>
+                <!--<li>
+                    <a href="{{ url_for('tasks') }}"><span class="fa fa-sticky-note mr-3"></span> Tasks</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('calendar') }}"><span class="fa fa-sticky-note mr-3"></span> Calendar</a>
+                </li>
+                
+                <li>
+                    <a href="{{ url_for('settings') }}"><span class="fa fa-user mr-3"></span> Settings</a>
+                </li>-->
+                <li>
+                    <a href="{{ url_for('info') }}"><span class="fa fa-paper-plane mr-3"></span> Info</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <h2 class="mb-4">Info</h2>
+            <p>This is the Info Page! Here, you can see information on how to use this service.</p>            
+            <p>With this project, I aim to create a platform that students can use to maintain organization. The goal is to have a central place where students can manage their schoolwork without having to switch between multiple websites. This platform will have similar functionality to apps like My Study Life, Trello, and myHomework. This means that users will be able to enter upcoming assignments, exams, and other information to keep track of. The app will send reminders to the user when the designated date is close. What will set it apart is that it will allow students to integrate Canvas for use in the application. This means that when they link their Canvas account, it will be able to display schedule, upcoming assignments, current grades, and more. It will have a calendar feature that shows the academic calendar for the current semester, along with any important dates, deadlines, or holidays. 
+            </p>
+            <h4 style="color:#2f89fc;">Adding a Task</h4>
+            <p>When you want to add a task on the Home page, enter a name, details, subject, and due date for the task, then click Add Task. </p>
+            <h4 style="color:#2f89fc;">Canvas Integration</h4>
+            <p>The Canvas Integration feature allows you to add tasks directly from your Canvas Todo List! </p>
+            <ol>
+                <li>Type in your Canvas username</li>
+                <li>Type in your Canvas password</li>
+                <li>Type in your Canvas authentication token</li>
+                <ul>
+                    <li>In order to generate a token, navigate to Canvas settings and under Approved Integrations, click "New Access Token"</li>
+                </ul>
+                <li>Click Login</li>
+            </ol>
+        </div>
+    </div>
+</body>
+
+</html>

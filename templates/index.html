@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
+<link type="text/css" rel="stylesheet" id="dark-mode-general-link">
+<style lang="en" type="text/css" id="dark-mode-custom-style"></style>
+<style lang="en" type="text/css" id="dark-mode-native-style"></style>-->
+
+<head>
+    <title>Assignment Tracker</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> <!--icons-->
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="">
+            <h1><a href="{{ url_for('index') }}" class="logo">Assignment Tracker</a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="{{ url_for('index') }}"><span class="fa fa-home mr-3"></span> Home</a>
+                </li>
+                <!--<li>
+                    <a href="{{ url_for('tasks') }}"><span class="fa fa-sticky-note mr-3"></span> Tasks</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('calendar') }}"><span class="fa fa-sticky-note mr-3"></span> Calendar</a>
+                </li>
+                
+                <li>
+                    <a href="{{ url_for('settings') }}"><span class="fa fa-user mr-3"></span> Settings</a>
+                </li>-->
+                <li>
+                    <a href="{{ url_for('info') }}"><span class="fa fa-paper-plane mr-3"></span> Info</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <h2 class="mb-4">Home</h2>
+            <p>This is your Home Page! Here, you can see all your assignments, as well as a preview of your calendar.</p>            
+            
+            <!--TASKS TABLE START-->
+            <!--<table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Due Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Homework 3</td>
+                        <td>April 3, 2021</td>
+                        <td>
+                            <a href="">Delete</a>
+                            <br>
+                            <a href="">Update</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Quiz</td>
+                        <td>March 22, 2021</td>
+                        <td>
+                            <a href="">Delete</a>
+                            <br>
+                            <a href="">Update</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Essay</td>
+                        <td>April 9, 2021</td>
+                        <td>
+                            <a href="">Delete</a>
+                            <br>
+                            <a href="">Update</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>-->
+            <!--END OF TASKS TABLE-->                       
+            
+
+            <div class="plswork">
+                <form action="/" method="POST">
+                    <label for="content">Task Name:</label>
+                    <input type="text" name="content" id="ct">
+                    <label for="details">Details: </label>
+                    <input type="text" name="details" id="dt">
+                    <label for="subject">Subject: </label>
+                    <input type="text" name="subject" id="sj">
+                    <label for="duedate">Due Date: </label>
+                    <input type="datetime-local" name="duedate" id="dd">
+
+                    <input type="submit" value="Add Task">
+                </form>
+            </div>
+            
+                <!--TASKS TABLE START (V2)-->     
+                {% if tasks|length < 1 %}
+                <h4 style="text-align: center">There are no tasks. Create one!</h4>
+                {% else %}       
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Details</th>
+                            <th>Course</th>
+                            <th>Due Date</th>                        
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    {% for task in tasks %}
+                        <tr>
+                            <td>{{ task.content }}</td>
+                            <td>{{ task.details }}</td>
+                            <td>{{ task.subject }}</td>
+                            <td>{{ task.duedate }}</td>
+                            <td>
+                                <a href="/delete/{{task.id}}">Delete</a>
+                                <br>
+                                <a href="/update/{{task.id}}">Update</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>   
+                {% endif %}        
+                <!--END OF TASKS TABLE-->  
+            <div class="canvas-stuff">
+                
+                <div>
+                    <!--CURRENT COURSES TABLE-->     
+                    {% if tasks|length < 2 %}
+                    <h4 style="text-align: center"> </h4>
+                    {% else %}  
+                    <h4>Current Courses</h4>
+                    <table class="styled-table" >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Course Code</th>
+                                <th>Term</th>
+                            </tr>
+                        </thead>                    
+                        <tr>
+                            <td>Beginning Japanese 2</td>
+                            <td>JP-102-51</td>
+                            <td>Spring 2021</td>
+                        </tr> 
+                        <tr>
+                            <td>Systems Tech & Practices Seminar</td>
+                            <td>CS-476-1</td>
+                            <td>Spring 2021</td>
+                        </tr> 
+                        <tr>
+                            <td>Design Patterns</td>
+                            <td>CS-477-51</td>
+                            <td>Spring 2021</td>
+                        </tr> 
+                        <tr>
+                            <td>Communication, Tech, & Society</td>
+                            <td>COM-140-53</td>
+                            <td>Spring 2021</td>
+                        </tr> 
+                        <tr>
+                            <td>Hebrew Bible</td>
+                            <td>TRS-200-51</td>
+                            <td>Spring 2021</td>
+                        </tr>                    
+                    </table>   
+                </div>
+
+                <div>
+                    <h4>Calendar</h4>
+                
+                <div class="jzdbox1 jzdbasf jzdcal">
+
+                    <div class="jzdcalt">May 2021</div>
+                    
+                    <span>Su</span>
+                    <span>Mo</span>
+                    <span>Tu</span>
+                    <span>We</span>
+                    <span>Th</span>
+                    <span>Fr</span>
+                    <span>Sa</span>                    
+                    
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+                    <span class="circle" data-title="JP-102-51 SP21: Beginning Japanese Ii">12</span>
+                    <span>13</span>
+                    <span class="circle" data-title="Paper #2 (Option #1)">14</span>
+                    <span>15</span>
+                    <span>16</span>
+                    <span>17</span>
+                    <span>18</span>
+                    <span>19</span>
+                    <span>20</span>
+                    <span>21</span>
+                    <span>22</span>
+                    <span>23</span>
+                    <span>24</span>
+                    <span>25</span>
+                    <span>26</span>
+                    <span>27</span>
+                    <span>28</span>
+                    <span>29</span>
+                    <span>30</span>
+                    <span>31</span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>
+                    <span class="jzdb"><!--BLANK--></span>                    
+                </div>
+            </div>
+
+
+                <div>
+                    <h4>Recent Feedback</h4>
+                    <table class="styled-table" >
+                        <thead>
+                            <tr>
+                                <th>Assignment</th>
+                                <th>Course</th>
+                                <th>Score</th>
+                                <th>Comment</th>
+                            </tr>
+                        </thead>                    
+                            <tr>
+                                <td>Exam 2 In Class</td>
+                                <td>Design Patterns</td>
+                                <td>111 out of 125</td>
+                                <td>"See attached files."</td>
+                            </tr> 
+                            <tr>
+                                <td>Assignment 4</td>
+                                <td>Communication, Tech, & Society</td>
+                                <td>78 out of 80</td>
+                                <td>"Please see the attached graded paper for my comments on your essay. Thanks."</td>
+                            </tr> 
+                            <tr>
+                                <td>HW 8</td>
+                                <td>Design Patterns</td>
+                                <td>28 out of 30</td>
+                                <td>"See attached files."</td>
+                            </tr>                                              
+                    </table>   
+                </div>
+
+                    {% endif %}  
+                    <!--END OF TASKS TABLE-->  
+                
+            </div>
+
+            <!--CANVAS LOGIN START-->
+            <div class="form" id="canvas-login">
+                <h3>Canvas Login</h3>
+                <form action="/login" method="POST">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                    <label for="authtoken">Authenticity Token</label>
+                    <input type="text" name="authtoken" id="authtoken">
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+            <!--END OF CANVAS LOGIN-->
+
+        </div>
+    </div>
+    <!--<script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>-->
+</body>
+
+</html>
