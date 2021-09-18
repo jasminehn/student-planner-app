@@ -97,8 +97,8 @@ def login():
             #'authenticity_token': '1H45HviBe+Tx2g8fACOtaCbbeRWE3Z7RYGf7Nb6vDKGZFG0ozesaprSDdn5GUeA9Rbk1LLCKp7kJDJhTyNljxA==', #ORIGINAL
             #'authenticity_token': '2761~C9yI5vo5A7QjXpcuItqn7coJg6TchdFaJXBlmGPUJ0YsDI1xbBpMsfq345byOeyj',
             #'redirect_to_ssl': 1,
-            #'pseudonym_session[unique_id]': 'jnelson20',
-            #'pseudonym_session[password]': 'NE031413418yehet',
+            #'pseudonym_session[unique_id]': 'placeholder',
+            #'pseudonym_session[password]': 'placeholder',
             #'pseudonym_session[remember_me]': 0
 
             'utf8': '✓',
