@@ -8,6 +8,6 @@ I created a web app to help students maintain organization, with the goal of hav
 - [Github Pages](https://pages.github.com/) for easy push-to-deploy hosting
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/) for quickly creating and scaling this web apps
 - [Canvas LMS REST API](https://canvas.instructure.com/doc/api/) for accessing and modifying data externally from the Canvas application
-- [SQLAlchemy](https://www.sqlalchemy.org/) is a Python SQL toolkit and Object Relational Mapper that I used for leveraging all of SQL's functionality and flexibility
+- [SQLAlchemy](https://www.sqlalchemy.org/) is a Python SQL toolkit and Object Relational Mapper that I used for leveraging SQL's functionality and flexibility
 
 **Sidenote**: This project was originally hosted on Heroku, but I removed it due to their hosting pricing changes. Will be hosted on another platform soon!
