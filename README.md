@@ -10,4 +10,4 @@ I created a web app to help students maintain organization, with the goal of hav
 - [Canvas LMS REST API](https://canvas.instructure.com/doc/api/) for accessing and modifying data externally from the Canvas application
 - [SQLAlchemy](https://www.sqlalchemy.org/) is a Python SQL toolkit and Object Relational Mapper that I used for leveraging SQL's functionality and flexibility
 
-**Sidenote**: This project was originally hosted on Heroku, but I had to remove it due to their sudden price changes for hosting. It is now hosted on [Render](https://render.com/)!
+**Sidenote**: This project was originally hosted on Heroku, but I had to remove it due to their price changes for hosting. It is now hosted on [Render](https://render.com/)!
